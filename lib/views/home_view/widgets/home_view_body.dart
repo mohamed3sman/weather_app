@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/providers/weather_provider.dart';
+import 'package:weather_app/services/weather_service.dart';
 import 'package:weather_app/shared/components/custom_button.dart';
-import 'package:weather_app/views/weather_view/weather_view.dart';
+import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  HomeViewBody({super.key});
+
+  String? cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +24,21 @@ class HomeViewBody extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: TextFormField(
-              style: const TextStyle(color: whiteColor),
+            child: TextField(
+              cursorColor: whiteColor,
+              style: const TextStyle(color: whiteColor, fontSize: 20),
+              onChanged: (data) {
+                cityName = data;
+              },
+              onSubmitted: (data) async {
+                cityName = data;
+                WeatherService service = WeatherService();
+                service.getWeather(cityName: cityName!);
+                WeatherModel? weather =
+                    await service.getWeather(cityName: cityName!);
+                Provider.of<WeatherProvider>(context, listen: false)
+                    .weatherData = weather;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -51,10 +70,13 @@ class HomeViewBody extends StatelessWidget {
             height: 50,
           ),
           CustomMaterialButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const WeatherView();
-              }));
+            onPressed: () async {
+              WeatherService service = WeatherService();
+              service.getWeather(cityName: cityName!);
+              WeatherModel? weather =
+                  await service.getWeather(cityName: cityName!);
+              Provider.of<WeatherProvider>(context, listen: false).weatherData =
+                  weather;
             },
             text: 'Search Weather',
           ),

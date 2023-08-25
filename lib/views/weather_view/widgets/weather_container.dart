@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
+import 'package:weather_app/providers/weather_provider.dart';
 import 'daily_forecast.dart';
 import 'hourly_forecast_widget.dart';
 
@@ -8,6 +10,8 @@ class WeatherContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var weatherData = Provider.of<WeatherProvider>(context).weatherData;
+
     return Opacity(
       opacity: 0.85,
       child: Container(
@@ -67,10 +71,58 @@ class WeatherContainer extends StatelessWidget {
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.18,
-              child: ListView.builder(
+              child: ListView(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) => const HourlyForecastWidget(),
+                children: [
+                  HourlyForecastWidget(
+                    time: '12 AM',
+                    weather: '${weatherData?.dayOne12AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '2 AM',
+                    weather: '${weatherData?.dayOne2AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '4 AM',
+                    weather: '${weatherData?.dayOne4AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '6 AM',
+                    weather: '${weatherData?.dayOne6AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '8 AM',
+                    weather: '${weatherData?.dayOne8AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '10 AM',
+                    weather: '${weatherData?.dayOne10AM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '12 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '2 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '4 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '6 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '8 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                  HourlyForecastWidget(
+                    time: '10 PM',
+                    weather: '${weatherData?.dayOne12PM.toInt()}',
+                  ),
+                ],
               ),
             ),
             const Spacer(),

@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
 
 class HourlyForecastWidget extends StatelessWidget {
-  const HourlyForecastWidget({super.key});
+  const HourlyForecastWidget(
+      {super.key, required this.time, required this.weather});
+
+  final String time;
+  final String weather;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 7),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
+        width: MediaQuery.of(context).size.width * 0.17,
+        padding: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             begin: Alignment.topRight,
@@ -24,27 +29,27 @@ class HourlyForecastWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text(
-              '12 AM',
-              style: TextStyle(
-                fontSize: 18,
+            Text(
+              time,
+              style: const TextStyle(
+                fontSize: 19,
                 color: whiteColor,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w500,
               ),
             ),
             Image.asset('assets/images/moon_cloud_mid_rain.png'),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '19',
-                  style: TextStyle(
+                  weather,
+                  style: const TextStyle(
                     fontSize: 22,
                     color: whiteColor,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                Text(
+                const Text(
                   '\u00B0',
                   style: TextStyle(
                     fontSize: 35,

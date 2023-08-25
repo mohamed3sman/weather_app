@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
+import 'package:weather_app/providers/weather_provider.dart';
+import 'package:weather_app/views/weather_view/weather_view.dart';
 
 import 'weather_container.dart';
 
-class WeatherViewBody extends StatelessWidget {
+class WeatherViewBody extends StatefulWidget {
   const WeatherViewBody({super.key});
 
   @override
+  State<WeatherViewBody> createState() => _WeatherViewBodyState();
+}
+
+class _WeatherViewBodyState extends State<WeatherViewBody> {
+  @override
   Widget build(BuildContext context) {
+    var weatherData = Provider.of<WeatherProvider>(context).weatherData;
     return Stack(
       children: [
         Column(
@@ -32,8 +41,12 @@ class WeatherViewBody extends StatelessWidget {
                       ),
                     ),
                     child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
+                      onPressed: () async {
+                        weatherData = null;
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const WeatherView();
+                        }));
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_new_rounded,
@@ -45,26 +58,26 @@ class WeatherViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            const Text(
-              'Montreal',
-              style: TextStyle(
+            Text(
+              '${weatherData?.cityName}',
+              style: const TextStyle(
                 fontSize: 45,
                 color: whiteColor,
                 fontWeight: FontWeight.w300,
               ),
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '19',
-                  style: TextStyle(
+                  '${weatherData?.temp.toInt()}',
+                  style: const TextStyle(
                     fontSize: 60,
                     color: whiteColor,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                Text(
+                const Text(
                   '\u00B0',
                   style: TextStyle(
                     fontSize: 75,
@@ -75,7 +88,7 @@ class WeatherViewBody extends StatelessWidget {
               ],
             ),
             Text(
-              'Mostly Clear',
+              '${weatherData?.weatherState}',
               style: TextStyle(
                 fontSize: 22,
                 color: whiteColor.withOpacity(0.6),
@@ -85,9 +98,9 @@ class WeatherViewBody extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            const Text(
-              'H:24\u00B0  L:18\u00B0',
-              style: TextStyle(
+            Text(
+              'H:${weatherData?.maxTemp.toInt()}\u00B0  L:${weatherData?.minTemp.toInt()}\u00B0',
+              style: const TextStyle(
                 fontSize: 20,
                 color: whiteColor,
                 fontWeight: FontWeight.w500,

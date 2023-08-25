@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
             height: double.infinity,
             fit: BoxFit.fill,
           ),
-          const HomeViewBody(),
+          HomeViewBody(),
         ],
       ),
     );
