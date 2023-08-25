@@ -5,15 +5,27 @@ import 'package:weather_app/providers/weather_provider.dart';
 import 'package:weather_app/services/weather_service.dart';
 import 'package:weather_app/shared/components/custom_button.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/views/weather_view/weather_view.dart';
 
 // ignore: must_be_immutable
 class HomeViewBody extends StatelessWidget {
   HomeViewBody({super.key});
 
   String? cityName;
+  var snackBar = const SnackBar(
+    content: Text(
+      'Enter a correct city name',
+      style: TextStyle(
+        fontSize: 18,
+      ),
+    ),
+    backgroundColor: kPrimaryColor,
+  );
 
   @override
   Widget build(BuildContext context) {
+    var weatherData = Provider.of<WeatherProvider>(context).weatherData;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,6 +89,12 @@ class HomeViewBody extends StatelessWidget {
                   await service.getWeather(cityName: cityName!);
               Provider.of<WeatherProvider>(context, listen: false).weatherData =
                   weather;
+              weatherData?.cityName != null
+                  ? Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                      return const WeatherView();
+                    }))
+                  : ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             text: 'Search Weather',
           ),

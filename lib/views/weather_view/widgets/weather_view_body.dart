@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/providers/weather_provider.dart';
-import 'package:weather_app/views/weather_view/weather_view.dart';
 
 import 'weather_container.dart';
 
@@ -43,10 +42,7 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
                     child: IconButton(
                       onPressed: () async {
                         weatherData = null;
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const WeatherView();
-                        }));
+                        Navigator.pop(context);
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_new_rounded,

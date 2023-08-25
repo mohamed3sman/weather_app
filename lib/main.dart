@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/providers/weather_provider.dart';
-import 'package:weather_app/views/weather_view/weather_view.dart';
+import 'package:weather_app/views/home_view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const WeatherView(),
+        home: const HomeView(),
       ),
     );
   }
