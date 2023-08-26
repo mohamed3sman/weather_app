@@ -20,6 +20,7 @@ class DailyForecastViewBody extends StatelessWidget {
           dayLowDegree: weatherData?.dayTwoLowTemp.toInt(),
           cityName: weatherData?.cityName,
           countryName: weatherData?.countryName,
+          weatherImage: weatherData?.dayTwoGetImage(),
         ),
         DailyWeatherWidget(
           date: weatherData?.dayThreedate,
@@ -28,6 +29,7 @@ class DailyForecastViewBody extends StatelessWidget {
           dayLowDegree: weatherData?.dayThreeLowTemp.toInt(),
           cityName: weatherData?.cityName,
           countryName: weatherData?.countryName,
+          weatherImage: weatherData?.dayThreeGetImage(),
         ),
       ],
     );

@@ -10,6 +10,7 @@ class DailyWeatherWidget extends StatelessWidget {
     required this.cityName,
     required this.countryName,
     this.date,
+    this.weatherImage,
   });
 
   final int? dayDegree;
@@ -18,6 +19,7 @@ class DailyWeatherWidget extends StatelessWidget {
   final String? date;
   final String? cityName;
   final String? countryName;
+  final String? weatherImage;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +77,8 @@ class DailyWeatherWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         Image.asset(
-                          'assets/images/Moon cloud mid rain.png',
-                          width: MediaQuery.of(context).size.width * 0.33,
+                          weatherImage!,
+                          width: MediaQuery.of(context).size.width * 0.30,
                         ),
                         const SizedBox(
                           height: 10,
@@ -94,7 +96,7 @@ class DailyWeatherWidget extends StatelessWidget {
                     Text(
                       '$cityName, $countryName',
                       style: const TextStyle(
-                        fontSize: 19,
+                        fontSize: 20,
                         color: whiteColor,
                         fontWeight: FontWeight.w400,
                       ),

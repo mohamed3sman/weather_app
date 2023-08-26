@@ -3,10 +3,14 @@ import 'package:weather_app/constants/constants.dart';
 
 class HourlyForecastWidget extends StatelessWidget {
   const HourlyForecastWidget(
-      {super.key, required this.time, required this.weather});
+      {super.key,
+      required this.time,
+      required this.weather,
+      required this.weatherImage});
 
   final String time;
   final String weather;
+  final String weatherImage;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,10 @@ class HourlyForecastWidget extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Image.asset('assets/images/moon_cloud_mid_rain.png'),
+            Image.asset(
+              weatherImage,
+              width: 40,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
