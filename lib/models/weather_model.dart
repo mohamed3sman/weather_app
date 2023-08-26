@@ -11,7 +11,13 @@ class WeatherModel {
   String dayTwodate;
   String dayTwoweatherIcon;
   double dayTwotemp;
+  double dayTwoHeighTemp;
+  double dayTwoLowTemp;
+  String dayTwoWeatherState;
   String dayThreedate;
+  double dayThreeHeighTemp;
+  double dayThreeLowTemp;
+  String dayThreeWeatherState;
   String dayThreeweatherIcon;
   double dayThreetemp;
   double dayOne12AM;
@@ -40,8 +46,14 @@ class WeatherModel {
     required this.dayTwodate,
     required this.dayTwoweatherIcon,
     required this.dayTwotemp,
+    required this.dayTwoHeighTemp,
+    required this.dayTwoLowTemp,
+    required this.dayTwoWeatherState,
     required this.dayThreeweatherIcon,
     required this.dayThreetemp,
+    required this.dayThreeHeighTemp,
+    required this.dayThreeLowTemp,
+    required this.dayThreeWeatherState,
     required this.dayThreedate,
     required this.dayOne12AM,
     required this.dayOne2AM,
@@ -87,9 +99,15 @@ class WeatherModel {
       dayTwodate: dayTwoJsondata['date'],
       dayTwoweatherIcon: dayTwoJsondata['day']['condition']['icon'],
       dayTwotemp: dayTwoJsondata['day']['avgtemp_c'],
+      dayTwoHeighTemp: dayTwoJsondata['day']['maxtemp_c'],
+      dayTwoLowTemp: dayTwoJsondata['day']['mintemp_c'],
+      dayTwoWeatherState: dayTwoJsondata['day']['condition']['text'],
       dayThreedate: dayThreeJsondata['date'],
       dayThreeweatherIcon: dayThreeJsondata['day']['condition']['icon'],
       dayThreetemp: dayThreeJsondata['day']['avgtemp_c'],
+      dayThreeHeighTemp: dayThreeJsondata['day']['maxtemp_c'],
+      dayThreeLowTemp: dayThreeJsondata['day']['mintemp_c'],
+      dayThreeWeatherState: dayThreeJsondata['day']['condition']['text'],
       dayOne12AM: dayOne12AM['temp_c'],
       dayOne2AM: dayOne2AM['temp_c'],
       dayOne4AM: dayOne4AM['temp_c'],

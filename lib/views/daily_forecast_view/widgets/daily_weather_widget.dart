@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
 
 class DailyWeatherWidget extends StatelessWidget {
-  const DailyWeatherWidget({super.key});
+  const DailyWeatherWidget({
+    super.key,
+    required this.dayDegree,
+    required this.dayHightDegree,
+    required this.dayLowDegree,
+    required this.cityName,
+    required this.countryName,
+    this.date,
+  });
+
+  final int? dayDegree;
+  final int? dayHightDegree;
+  final int? dayLowDegree;
+  final String? date;
+  final String? cityName;
+  final String? countryName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +39,17 @@ class DailyWeatherWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           children: [
                             Text(
-                              '19',
-                              style: TextStyle(
+                              '$dayDegree',
+                              style: const TextStyle(
                                 fontSize: 60,
                                 color: whiteColor,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            Text(
+                            const Text(
                               '\u00B0',
                               style: TextStyle(
                                 fontSize: 75,
@@ -45,7 +60,7 @@ class DailyWeatherWidget extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          'H:24\u00B0  L:18\u00B0',
+                          'H:$dayHightDegree\u00B0  L:$dayLowDegree\u00B0',
                           style: TextStyle(
                             fontSize: 16,
                             color: whiteColor.withOpacity(0.5),
@@ -71,26 +86,29 @@ class DailyWeatherWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Text(
-                    'Montreal, Canada',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: whiteColor,
-                      fontWeight: FontWeight.w400,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '$cityName, $countryName',
+                      style: const TextStyle(
+                        fontSize: 19,
+                        color: whiteColor,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Mid Rain',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: whiteColor.withOpacity(0.8),
-                      fontWeight: FontWeight.w400,
+                    Text(
+                      '$date',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: whiteColor.withOpacity(0.8),
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

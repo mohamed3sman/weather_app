@@ -50,6 +50,12 @@ class HomeViewBody extends StatelessWidget {
                     await service.getWeather(cityName: cityName!);
                 Provider.of<WeatherProvider>(context, listen: false)
                     .weatherData = weather;
+                weatherData?.cityName != null
+                    ? Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                        return const WeatherView();
+                      }))
+                    : null;
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
