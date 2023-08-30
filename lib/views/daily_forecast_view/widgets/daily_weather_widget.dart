@@ -94,12 +94,17 @@ class DailyWeatherWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '$cityName, $countryName',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: whiteColor,
-                        fontWeight: FontWeight.w400,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        '$cityName, $countryName',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          color: whiteColor,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                     Text(
