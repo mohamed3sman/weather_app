@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/views/daily_forecast_view/daily_forecast_view.dart';
 
@@ -15,20 +16,20 @@ class DailyForecast extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
+          Text(
             'Daily Forecast',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 20.sp,
               color: whiteColor,
               fontWeight: FontWeight.w500,
             ),
           ),
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
-                Radius.circular(10),
+                Radius.circular(10.r),
               ),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
@@ -43,9 +44,9 @@ class DailyForecast extends StatelessWidget {
                   return const DailyForecastView();
                 }));
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_forward_ios_rounded,
-                size: 30,
+                size: 27.sp,
               ),
               color: whiteColor,
             ),

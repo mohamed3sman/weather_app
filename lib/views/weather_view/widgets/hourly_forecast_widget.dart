@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/constants/constants.dart';
 
 class HourlyForecastWidget extends StatelessWidget {
@@ -28,15 +29,15 @@ class HourlyForecastWidget extends StatelessWidget {
               Color(0xff362ab4),
             ],
           ),
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               time,
-              style: const TextStyle(
-                fontSize: 19,
+              style: TextStyle(
+                fontSize: 17.sp,
                 color: whiteColor,
                 fontWeight: FontWeight.w500,
               ),
@@ -50,16 +51,16 @@ class HourlyForecastWidget extends StatelessWidget {
               children: [
                 Text(
                   weather,
-                  style: const TextStyle(
-                    fontSize: 22,
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: whiteColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const Text(
+                Text(
                   '\u00B0',
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 30.sp,
                     color: whiteColor,
                     fontWeight: FontWeight.w300,
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/providers/weather_provider.dart';
@@ -16,20 +17,20 @@ class WeatherContainer extends StatelessWidget {
       opacity: 0.85,
       child: Container(
         height: MediaQuery.of(context).size.height * 0.39,
-        padding: const EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 15,
+        padding: EdgeInsets.only(
+          left: 18.w,
+          right: 18.w,
+          top: 12.h,
         ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50),
+            topLeft: Radius.circular(50.r),
             topRight: Radius.circular(
-              50,
+              50.r,
             ),
           ),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
@@ -44,7 +45,7 @@ class WeatherContainer extends StatelessWidget {
               width: 50,
               height: 5,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(30.r),
                 gradient: const LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
@@ -58,10 +59,10 @@ class WeatherContainer extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            const Text(
+            Text(
               'Hourly Forecast',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18.sp,
                 color: whiteColor,
                 fontWeight: FontWeight.w500,
               ),

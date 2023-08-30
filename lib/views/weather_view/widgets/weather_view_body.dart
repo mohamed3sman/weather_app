@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/providers/weather_provider.dart';
@@ -22,15 +23,17 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 30, top: 60),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  top: MediaQuery.of(context).size.height * 0.07),
               child: Row(
                 children: [
                   Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+                        Radius.circular(10.r),
                       ),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
@@ -44,9 +47,9 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
                         weatherData = null;
                         Navigator.pop(context);
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_new_rounded,
-                        size: 30,
+                        size: 28.sp,
                       ),
                       color: whiteColor,
                     ),
@@ -56,8 +59,8 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
             ),
             Text(
               '${weatherData?.cityName}',
-              style: const TextStyle(
-                fontSize: 45,
+              style: TextStyle(
+                fontSize: 40.sp,
                 color: whiteColor,
                 fontWeight: FontWeight.w300,
               ),
@@ -67,16 +70,16 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
               children: [
                 Text(
                   '${weatherData?.temp.toInt()}',
-                  style: const TextStyle(
-                    fontSize: 60,
+                  style: TextStyle(
+                    fontSize: 53.sp,
                     color: whiteColor,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                const Text(
+                Text(
                   '\u00B0',
                   style: TextStyle(
-                    fontSize: 75,
+                    fontSize: 65.sp,
                     color: whiteColor,
                     fontWeight: FontWeight.w300,
                   ),
@@ -86,7 +89,7 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
             Text(
               '${weatherData?.weatherState}',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20.sp,
                 color: whiteColor.withOpacity(0.6),
                 fontWeight: FontWeight.w500,
               ),
@@ -96,18 +99,18 @@ class _WeatherViewBodyState extends State<WeatherViewBody> {
             ),
             Text(
               'H:${weatherData?.maxTemp.toInt()}\u00B0  L:${weatherData?.minTemp.toInt()}\u00B0',
-              style: const TextStyle(
-                fontSize: 20,
+              style: TextStyle(
+                fontSize: 18.sp,
                 color: whiteColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.012,
             ),
             Image.asset(
               'assets/images/house.png',
-              height: 350,
+              height: MediaQuery.of(context).size.height * 0.42,
             ),
             const Spacer(
               flex: 2,
