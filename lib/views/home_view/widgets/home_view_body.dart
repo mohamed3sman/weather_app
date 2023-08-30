@@ -6,17 +6,18 @@ import 'package:weather_app/services/weather_service.dart';
 import 'package:weather_app/shared/components/custom_button.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/views/weather_view/weather_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class HomeViewBody extends StatelessWidget {
   HomeViewBody({super.key});
 
   String? cityName;
-  var snackBar = const SnackBar(
+  var snackBar = SnackBar(
     content: Text(
       'Enter a correct city name',
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 18.sp,
       ),
     ),
     backgroundColor: kPrimaryColor,
@@ -32,13 +33,14 @@ class HomeViewBody extends StatelessWidget {
         children: [
           Image.asset(
             'assets/images/Sun_cloud_angled_rain.png',
-            width: 250,
+            width: MediaQuery.of(context).size.width * 0.5,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: TextField(
+              autofocus: true,
               cursorColor: whiteColor,
-              style: const TextStyle(color: whiteColor, fontSize: 20),
+              style: TextStyle(color: whiteColor, fontSize: 18.sp),
               onChanged: (data) {
                 cityName = data;
               },
@@ -59,14 +61,14 @@ class HomeViewBody extends StatelessWidget {
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.r),
                     borderSide: const BorderSide(
                       color: whiteColor,
                       width: 2,
                     )),
                 labelText: 'Search a city',
-                labelStyle: const TextStyle(
-                  fontSize: 22,
+                labelStyle: TextStyle(
+                  fontSize: 20.sp,
                   color: whiteColor,
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -84,8 +86,8 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 50,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.075,
           ),
           CustomMaterialButton(
             onPressed: () async {

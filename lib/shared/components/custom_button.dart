@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/constants.dart';
 
 class CustomMaterialButton extends StatelessWidget {
@@ -32,15 +33,15 @@ class CustomMaterialButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: onPressed,
         textColor: whiteColor,
-        padding: const EdgeInsets.symmetric(
-          vertical: 15,
-          horizontal: 25,
+        padding: EdgeInsets.symmetric(
+          vertical: 13.h,
+          horizontal: 22.w,
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
