@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/constants/constants.dart';
 
 import 'widgets/daily_forecast_view_body.dart';
@@ -14,14 +15,14 @@ class DailyForecastView extends StatelessWidget {
         backgroundColor: kPrimaryColor,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
+          padding: EdgeInsets.only(left: 15.w),
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios_new_rounded,
-              size: 30,
+              size: 28.sp,
             ),
             color: whiteColor,
           ),

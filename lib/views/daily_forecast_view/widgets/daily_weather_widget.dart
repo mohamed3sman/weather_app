@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/constants/constants.dart';
 
 class DailyWeatherWidget extends StatelessWidget {
@@ -45,16 +46,16 @@ class DailyWeatherWidget extends StatelessWidget {
                           children: [
                             Text(
                               '$dayDegree',
-                              style: const TextStyle(
-                                fontSize: 60,
+                              style: TextStyle(
+                                fontSize: 52.sp,
                                 color: whiteColor,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const Text(
+                            Text(
                               '\u00B0',
                               style: TextStyle(
-                                fontSize: 75,
+                                fontSize: 65.sp,
                                 color: whiteColor,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -64,7 +65,7 @@ class DailyWeatherWidget extends StatelessWidget {
                         Text(
                           'H:$dayHightDegree\u00B0  L:$dayLowDegree\u00B0',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14.sp,
                             color: whiteColor.withOpacity(0.5),
                             fontWeight: FontWeight.w500,
                           ),
@@ -89,14 +90,14 @@ class DailyWeatherWidget extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 37.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '$cityName, $countryName',
-                      style: const TextStyle(
-                        fontSize: 20,
+                      style: TextStyle(
+                        fontSize: 18.sp,
                         color: whiteColor,
                         fontWeight: FontWeight.w400,
                       ),
@@ -104,7 +105,7 @@ class DailyWeatherWidget extends StatelessWidget {
                     Text(
                       '$date',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14.sp,
                         color: whiteColor.withOpacity(0.8),
                         fontWeight: FontWeight.w400,
                       ),
